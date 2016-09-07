@@ -13,9 +13,6 @@ namespace Canon.Controllers
     public class UsuarioController : Controller
     {
         static List<Usuario> Usuarios = new List<Usuario>();
-        
-
-    
 
         public ActionResult GetAllUsuario()
         {
@@ -23,16 +20,12 @@ namespace Canon.Controllers
             Usuarios.Add(new Usuario() { Id = 2, Name = "player1", Estado = false });
             return Json(Usuarios, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult getUsuario(int id)
         {
             var usuarios = Usuarios.FirstOrDefault((c) => c.Id == id);
             return Json(usuarios, JsonRequestBehavior.AllowGet);
-            
-        }
-
-
-      
-
 
         }
     }
+}

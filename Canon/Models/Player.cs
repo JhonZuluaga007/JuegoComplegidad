@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Canon.Models
 {
-    public class Player1
+    public class Player
     {
         [Key]
         public int Id { get; set; }
