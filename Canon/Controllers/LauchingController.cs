@@ -12,18 +12,24 @@ namespace Canon.Controllers
     public class LauchingController : Controller
     {
 
-        Launching[] Launchinges = new Launching[]
-        {
-            new Launching {Id=1, IdGamer=01, Angle= 23456, Power=98},
-            new Launching {Id=2, IdGamer=02, Angle= 97656, Power=00}
-        };
 
 
-        public ActionResult getLauching(int id)
-        {
-            var lauching = Launchinges.FirstOrDefault((c) => c.Id == id);
-            return Json(Launchinges, JsonRequestBehavior.AllowGet);
+        static List<Launching> lauching = new List<Launching>();
+
+
+        public ActionResult getVelocidad(float Velocidad,float Angulo  )
+        {  
+        lauching.Add( new Launching(){ Id = 1, IdGamer = 2, Angle=Angulo, Velocidad=Velocidad});
+        return Json(lauching, JsonRequestBehavior.AllowGet);
         }
+
+
+        public ActionResult getLauching()
+        {
+          return Json(lauching, JsonRequestBehavior.AllowGet);
+        }
+
+    
 
 
     }
