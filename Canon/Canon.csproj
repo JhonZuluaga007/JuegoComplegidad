@@ -221,7 +221,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Launching.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
