@@ -13,9 +13,9 @@ namespace Canon.Controllers
     {
         static List<Launching> lauching = new List<Launching>();
 
-        public ActionResult getVelocidad(float Velocidad,float Angulo, bool choque )
+        public ActionResult getVelocidad(float Velocidad,float Angulo)
         {  
-            lauching.Add( new Launching(){ Id = 1, IdGamer = 2, Angle=Angulo, Velocidad=Velocidad, Choque=choque});
+            lauching.Add( new Launching(){ Id = 1, IdGamer = 2, Angle=Angulo, Velocidad=Velocidad});
             return Json(lauching, JsonRequestBehavior.AllowGet);
         }
 

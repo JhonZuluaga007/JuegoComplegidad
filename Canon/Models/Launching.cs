@@ -13,6 +13,5 @@ namespace Canon.Models
         public int  IdGamer{ get; set; }
         public float Velocidad { get; set; }
         public float Angle { get; set; }
-        public bool Choque { get; set; }
     }
 }
