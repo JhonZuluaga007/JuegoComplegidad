@@ -24,10 +24,7 @@ namespace Canon.Controllers
         }
 
 
-        public ActionResult getLauching()
-        {
-          return Json(lauching, JsonRequestBehavior.AllowGet);
-        }
+       
 
         public ActionResult getChoque(int id) {
 
