@@ -23,7 +23,5 @@ namespace Canon.Controllers
         {
             return Json(lauching, JsonRequestBehavior.AllowGet);
         }
-
-        
     }
 }
