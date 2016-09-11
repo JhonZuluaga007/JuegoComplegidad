@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Canon.Models
 {
     public class Facebook
     {
-        public int id { get; set; }
+   
+        public string tocke { get; set;}
+
         
+
+
 
 
     }

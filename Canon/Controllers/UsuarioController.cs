@@ -1,6 +1,5 @@
 ﻿using Canon.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,41 +13,34 @@ namespace Canon.Controllers
     public class UsuarioController : Controller
     {
         static List<Usuario> Usuarios = new List<Usuario>();
-        //static ArrayList<Usuario> Usuarios = new ArrayList<Usuario>();
 
-        public ActionResult GetAgregarUsuario(int Id, string Name)
+
+
+
+        public ActionResult GetAgregarUsuario(string Name)
         {
-            if(Usuarios.Count != 0)
-            {
-                new Usuario() { Id = Id, Name = Name, Estado = true};
-                Usuarios[0].Estado = true;
 
-            }
-            else
-            {
-                Usuarios.Add(new Usuario() { Id = Id + Id, Name = Name, Estado = false });
-            }
+            Random r = new Random();
+            int aleatorio1 = r.Next();
+            Usuarios.Add(new Usuario() { Id = aleatorio1, Name = Name, Estado = false });
+
+
             return null;
-            //return Json(Usuarios, JsonRequestBehavior.AllowGet);
         }
         public ActionResult getUsuario(int id)
         {
+          
             var usuarios = Usuarios.FirstOrDefault((c) => c.Id == id);
             return Json(usuarios.Name, JsonRequestBehavior.AllowGet);
-
-        }
-
-        void jugando(){
-            if (Usuarios.Count != 0)
-            {
-
-            }
+            
         }
 
 
+        
 
 
+      
 
 
-    }
+        }
     }
