@@ -14,16 +14,12 @@ namespace Canon.Controllers
     {
         static List<Usuario> Usuarios = new List<Usuario>();
 
-
-
-
         public ActionResult GetAgregarUsuario(string Name)
         {
 
             Random r = new Random();
             int aleatorio1 = r.Next();
             Usuarios.Add(new Usuario() { Id = aleatorio1, Name = Name, Estado = false });
-
 
             return null;
         }
