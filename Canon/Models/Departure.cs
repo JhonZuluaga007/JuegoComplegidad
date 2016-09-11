@@ -10,7 +10,7 @@ namespace Canon.Models
     {
         [Key]
         public int Id { get; set; }
-        public int IdPlayer1 { get; set; }
+        public int IdPlayer { get; set; }
         public bool estado { get; set; }
     }
 

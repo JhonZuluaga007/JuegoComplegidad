@@ -17,25 +17,18 @@ namespace Canon.Controllers
         
         public ActionResult getPartida (int id)
         {
-            Partid.Add(new Departure(){ Id = y, IdPlayer1 = id, estado = false });
+            Partid.Add(new Departure(){ Id = y, IdPlayer = id, estado = false });
             contador++;
             if (contador== 1)
             {
                 y = y + 1;
                 contador = 0;
-
             }
             else
             {
 
             }
             return Json(Partid, JsonRequestBehavior.AllowGet);
-
-        }
-        
-     
-       
-
-      
+        }              
     }
 }

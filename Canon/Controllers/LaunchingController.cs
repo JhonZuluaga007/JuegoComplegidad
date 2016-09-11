@@ -13,20 +13,24 @@ namespace Canon.Controllers
     {
         static List<Launching> launching = new List<Launching>();
 
-        public ActionResult getVelocidad(float Velocidad, float Angulo)
+        public ActionResult getVelocidad(int IdGamer, float Velocidad, float Angulo)
         {
             launching.Add(new Launching() { Id = 1, IdGamer = 2, Angle = Angulo, Velocidad = Velocidad });
+
             return Json(launching, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult getMove(int Id, int IdGamer){
+            var Launching = launching.FirstOrDefault((c) => c.Id == Id && c.IdGamer != IdGamer);
+            return Json(Launching, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult getLaunching()
         {
             return Json(launching, JsonRequestBehavior.AllowGet);
-        }
 
+        }
         public ActionResult getChoque(int id)
         {
-
             var choque = launching.FirstOrDefault((c) => c.Id == id);
             return Json(choque.Id, JsonRequestBehavior.AllowGet);
         }
