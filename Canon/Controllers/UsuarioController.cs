@@ -17,14 +17,19 @@ namespace Canon.Controllers
 
 
 
-        public ActionResult GetAgregarUsuario(int Id ,string Name)
+        public ActionResult GetAgregarUsuario(string Name)
         {
-            Usuarios.Add(new Usuario() { Id = Id+Id, Name = Name, Estado = false });
-            
-            return Json(Usuarios, JsonRequestBehavior.AllowGet);
+
+            Random r = new Random();
+            int aleatorio1 = r.Next();
+            Usuarios.Add(new Usuario() { Id = aleatorio1, Name = Name, Estado = false });
+
+
+            return null;
         }
         public ActionResult getUsuario(int id)
         {
+          
             var usuarios = Usuarios.FirstOrDefault((c) => c.Id == id);
             return Json(usuarios.Name, JsonRequestBehavior.AllowGet);
             
