@@ -11,24 +11,21 @@ namespace Canon.Controllers
 {
     public class DepartureController : Controller
     {
-        static int y ;
-        int contador;
+       
+
         static List<Departure> Partid = new List<Departure>();
         
-        public ActionResult getPartida (int id)
+        public ActionResult getPartida (int Par ,int id)
         {
-            Partid.Add(new Departure(){ Id = y, IdPlayer = id, estado = false });
-            contador++;
-            if (contador== 1)
-            {
-                y = y + 1;
-                contador = 0;
-            }
-            else
-            {
-
-            }
+            Partid.Add(new Departure(){ Id =Par, IdPlayer = id, estado = false });
             return Json(Partid, JsonRequestBehavior.AllowGet);
-        }              
+        }     
+         
+        
+        public ActionResult getConsultar()
+        {
+            return Json(Partid, JsonRequestBehavior.AllowGet);
+
+        }      
     }
 }

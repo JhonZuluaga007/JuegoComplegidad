@@ -13,25 +13,47 @@ namespace Canon.Controllers
     public class UsuarioController : Controller
     {
         static List<Usuario> Usuarios = new List<Usuario>();
-
-
+         
+          static int a;
 
 
         public ActionResult GetAgregarUsuario(string Name)
         {
+            if (Usuarios.Count == 2)
+            {
+               Usuarios.Add(new Usuario() { Id = a, Name = Name, Estado = false});
+               
+                DepartureController partidad = new DepartureController();
+                partidad.getPartida(a,Usuarios[1].Id);
+                partidad.getPartida(a,Usuarios[0].Id);
+                Usuarios.RemoveAt(1);
+                Usuarios.RemoveAt(0);
 
-            Random r = new Random();
-            int aleatorio1 = r.Next();
-            Usuarios.Add(new Usuario() { Id = aleatorio1, Name = Name, Estado = false });
+                a++;
+                
 
 
-            return null;
+            }
+            else
+            {
+               Usuarios.Add(new Usuario() { Id = a, Name = Name, Estado = true });
+               a++;
+            }
+
+            var usuarios = Usuarios.FirstOrDefault((j) => j.Id==a-1 );
+            return Json(usuarios, JsonRequestBehavior.AllowGet);
+
+
+
         }
-        public ActionResult getUsuario(int id)
+        public ActionResult getUsuario(String name)
         {
+            LauchingController ad=  new LauchingController();
+         
           
-            var usuarios = Usuarios.FirstOrDefault((c) => c.Id == id);
-            return Json(usuarios.Name, JsonRequestBehavior.AllowGet);
+             var usuarios = Usuarios.FirstOrDefault((j) => j.Name == name);
+                return Json(usuarios.Id, JsonRequestBehavior.AllowGet);
+            }
             
         }
 
@@ -43,4 +65,4 @@ namespace Canon.Controllers
 
 
         }
-    }
+    
