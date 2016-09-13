@@ -13,5 +13,4 @@ namespace Canon.Models
         public int IdPlayer { get; set; }
         public bool estado { get; set; }
     }
-
 }

@@ -8,13 +8,6 @@ namespace Canon.Models
 {
     public class Facebook
     {
-   
-        public string tocke { get; set;}
-
-        
-
-
-
-
+        public string tocke { get; set; }
     }
 }
