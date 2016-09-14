@@ -24,6 +24,7 @@ namespace Canon.Controllers
         {
 
             return Json(facebook, JsonRequestBehavior.AllowGet);
+            
         }
     }
 }

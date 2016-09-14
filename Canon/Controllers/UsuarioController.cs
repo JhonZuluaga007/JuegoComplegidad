@@ -13,50 +13,61 @@ namespace Canon.Controllers
     public class UsuarioController : Controller
     {
         static List<Usuario> Usuarios = new List<Usuario>();
-         
-          static int a;
-
+        static List<Usuario> Partida = new List<Usuario>();
+        static int a;
+        static int p;
 
         public ActionResult GetAgregarUsuario(string Name)
         {
-            if (Usuarios.Count == 2)
+            if (Usuarios.Count == 1)
             {
-               Usuarios.Add(new Usuario() { Id = a, Name = Name, Estado = false});
-               
-                DepartureController partidad = new DepartureController();
-                partidad.getPartida(a,Usuarios[1].Id);
-                partidad.getPartida(a,Usuarios[0].Id);
-                Usuarios.RemoveAt(1);
-                Usuarios.RemoveAt(0);
-
+                Usuarios.Add(new Usuario() { Id = a, Name = Name, partidad = a, Turno = false });
+                Partida.Add(new Usuario() { Id = a, Name = Name, partidad = a, Turno = false });
                 a++;
-                
-
-
+                p++;
+                var usuario = Usuarios.FirstOrDefault((j) => j.Id == a - 1);
+                Usuarios.Clear();
+                return Json(usuario, JsonRequestBehavior.AllowGet);     
             }
             else
             {
-               Usuarios.Add(new Usuario() { Id = a, Name = Name, Estado = true });
-               a++;
+                Usuarios.Add(new Usuario() { Id = a, Name = Name, partidad = a + 1, Turno = true });
+                Partida.Add(new Usuario() { Id = a, Name = Name, partidad = a + 1, Turno = true });
+                a++;
+                p++;
             }
-
-            var usuarios = Usuarios.FirstOrDefault((j) => j.Id==a-1 );
+            var usuarios = Usuarios.FirstOrDefault((j) => j.Id == a - 1);
             return Json(usuarios, JsonRequestBehavior.AllowGet);
-
-
-
         }
-        public ActionResult getUsuario(String name)
+
+        public void getChangeTurn(int IdPartidad)
         {
-            LauchingController ad=  new LauchingController();
-         
-          
-             var usuarios = Usuarios.FirstOrDefault((j) => j.Name == name);
-                return Json(usuarios.Id, JsonRequestBehavior.AllowGet);
-            }
-            
+          for(int i = 0; i < Partida.Count; i++)
+            {
+                if (Partida[i].partidad == IdPartidad)
+                {
+                    Partida[i].Turno =!Partida[i].Turno;
+                }
+            }    
         }
 
+        public ActionResult getTurn(int Player)
+        {
+            var Partidas = Partida.FirstOrDefault((j) => j.Id == Player);
+            return Json(Partidas, JsonRequestBehavior.AllowGet);        
+        }
+
+        public ActionResult getConsulta()
+        {
+            int recibir = p;
+            if (recibir == 2)
+            {
+                p = 0;
+            }
+            return Json(recibir, JsonRequestBehavior.AllowGet);
+        }
+    }
+}
 
         
 
@@ -64,5 +75,5 @@ namespace Canon.Controllers
       
 
 
-        }
+        
     

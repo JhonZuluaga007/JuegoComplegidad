@@ -11,6 +11,8 @@ namespace Canon.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool Estado { get; set; }
+        public int partidad { get; set; }
+        public bool  Turno { get; set; }
+
     }
 }
