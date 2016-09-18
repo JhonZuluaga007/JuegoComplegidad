@@ -10,8 +10,6 @@ namespace Canon.Models
     {
         [Key]
         public int Departure { get; set; }
-        public int IdGamer { get; set; }
-        public bool IdTurno { get; set; }
         public float Velocidad { get; set; }
         public float Angle { get; set; }
     }

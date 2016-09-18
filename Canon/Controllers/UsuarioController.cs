@@ -60,7 +60,7 @@ namespace Canon.Controllers
         public ActionResult getConsulta()
         {
             int recibir = p;
-            if (recibir == 2)
+            if (recibir >= 2)
             {
                 p = 0;
             }
@@ -68,12 +68,4 @@ namespace Canon.Controllers
         }
     }
 }
-
-        
-
-
-      
-
-
-        
     

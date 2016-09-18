@@ -13,23 +13,21 @@ namespace Canon.Controllers
     {
         static List<Launching> launching = new List<Launching>();
 
-        public ActionResult getVelocidad(int Idpartidad,int IdGamer,bool Idturno, float Velocidad, float Angulo)
+        public void getVelocidad(int Idpartidad, float Velocidad, float Angulo)
         {
-           
 
-           
-            launching.Add(new Launching() {Departure = Idpartidad, IdGamer = IdGamer, Angle = Angulo, Velocidad = Velocidad });
-            return Json(new Launching() { Departure = Idpartidad, IdGamer = IdGamer, Angle = Angulo, Velocidad = Velocidad }, JsonRequestBehavior.AllowGet); 
+            launching.Add(new Launching() { Departure = Idpartidad, Angle = Angulo, Velocidad = Velocidad });
+            //return Json(new Launching() { Departure = Idpartidad, IdGamer = IdGamer, Angle = Angulo, Velocidad = Velocidad }, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult getMove(int Id, int IdGamer){
-           var Launching = launching.FirstOrDefault((c) => c.Departure == Id && c.IdGamer != IdGamer);
-           
-                int ss = launching.IndexOf(Launching);
-                
-                launching.RemoveAt(ss);
-                return Json(Launching, JsonRequestBehavior.AllowGet);
-           
-          
+        public ActionResult getMove(int Idpartida)
+        {
+            var Launching = launching.FirstOrDefault((c) => c.Departure == Idpartida);
+
+            int ss = launching.IndexOf(Launching);
+
+            launching.RemoveAt(ss);
+            return Json(Launching, JsonRequestBehavior.AllowGet);
+
         }
 
         public ActionResult getLaunching()
