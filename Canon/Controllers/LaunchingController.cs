@@ -21,13 +21,16 @@ namespace Canon.Controllers
         }
         public ActionResult getMove(int Idpartida)
         {
-            var Launching = launching.FirstOrDefault((c) => c.Departure == Idpartida);
+            if (launching.Count != 0)
+            {
+                var Launching = launching.FirstOrDefault((c) => c.Departure == Idpartida);
 
-            int ss = launching.IndexOf(Launching);
+                int ss = launching.IndexOf(Launching);
 
-            launching.RemoveAt(ss);
-            return Json(Launching, JsonRequestBehavior.AllowGet);
-
+                launching.RemoveAt(ss);
+                return Json(Launching, JsonRequestBehavior.AllowGet);
+            }
+            return null;
         }
 
         public ActionResult getLaunching()
