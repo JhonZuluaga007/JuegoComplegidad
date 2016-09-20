@@ -17,26 +17,26 @@ namespace Canon.Controllers
         static int a;
         static int p;
 
-        public ActionResult GetAgregarUsuario(string Name, int id)
+        public ActionResult GetAgregarUsuario(string Name)
         {
             if (Usuarios.Count == 1)
             {
-                Usuarios.Add(new Usuario() { Id = id, Name = Name, partidad = a, Turno = false });
-                Partida.Add(new Usuario() { Id = id, Name = Name, partidad = a, Turno = false });
+                Usuarios.Add(new Usuario() { Id = a, Name = Name, partidad = a, Turno = false });
+                Partida.Add(new Usuario() { Id = a, Name = Name, partidad = a, Turno = false });
                 a++;
                 p++;
-                var usuario = Usuarios.FirstOrDefault((j) => j.Id == id);
+                var usuario = Usuarios.FirstOrDefault((j) => j.Id == a - 1);
                 Usuarios.Clear();
                 return Json(usuario, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                Usuarios.Add(new Usuario() { Id = id, Name = Name, partidad = a + 1, Turno = true });
-                Partida.Add(new Usuario() { Id = id, Name = Name, partidad = a + 1, Turno = true });
+                Usuarios.Add(new Usuario() { Id = a, Name = Name, partidad = a + 1, Turno = true });
+                Partida.Add(new Usuario() { Id = a, Name = Name, partidad = a + 1, Turno = true });
                 a++;
                 p++;
             }
-            var usuarios = Usuarios.FirstOrDefault((j) => j.Id == id);
+            var usuarios = Usuarios.FirstOrDefault((j) => j.Id == a - 1);
             return Json(usuarios, JsonRequestBehavior.AllowGet);
         }
 
