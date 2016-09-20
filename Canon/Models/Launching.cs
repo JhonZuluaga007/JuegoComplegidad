@@ -13,4 +13,5 @@ namespace Canon.Models
         public float Velocidad { get; set; }
         public float Angle { get; set; }
     }
+
 }
