@@ -17,55 +17,55 @@ namespace Canon.Controllers
         static int a;
         static int p;
 
-        public ActionResult GetAgregarUsuario(string Name)
+        public ActionResult GetAgregarUsuario(string Name, int id)
         {
             if (Usuarios.Count == 1)
             {
-                Usuarios.Add(new Usuario() { Id = a, Name = Name, partidad = a, Turno = false });
-                Partida.Add(new Usuario() { Id = a, Name = Name, partidad = a, Turno = false });
+                Usuarios.Add(new Usuario() { Id = id, Name = Name, partidad = a, Turno = false });
+                Partida.Add(new Usuario() { Id = id, Name = Name, partidad = a, Turno = false });
                 a++;
                 p++;
-                var usuario = Usuarios.FirstOrDefault((j) => j.Id == a - 1);
+                var usuario = Usuarios.FirstOrDefault((j) => j.Id == id);
                 Usuarios.Clear();
-                return Json(usuario, JsonRequestBehavior.AllowGet);     
+                return Json(usuario, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                Usuarios.Add(new Usuario() { Id = a, Name = Name, partidad = a + 1, Turno = true });
-                Partida.Add(new Usuario() { Id = a, Name = Name, partidad = a + 1, Turno = true });
+                Usuarios.Add(new Usuario() { Id = id, Name = Name, partidad = a + 1, Turno = true });
+                Partida.Add(new Usuario() { Id = id, Name = Name, partidad = a + 1, Turno = true });
                 a++;
                 p++;
             }
-            var usuarios = Usuarios.FirstOrDefault((j) => j.Id == a - 1);
+            var usuarios = Usuarios.FirstOrDefault((j) => j.Id == id);
             return Json(usuarios, JsonRequestBehavior.AllowGet);
         }
 
         public void getChangeTurn(int IdPartidad)
         {
-          for(int i = 0; i < Partida.Count; i++)
+            for (int i = 0; i < Partida.Count; i++)
             {
                 if (Partida[i].partidad == IdPartidad)
                 {
-                    Partida[i].Turno =!Partida[i].Turno;
+                    Partida[i].Turno = !Partida[i].Turno;
                 }
-            }    
+            }
         }
 
         public ActionResult getTurn(int Player)
         {
             var Partidas = Partida.FirstOrDefault((j) => j.Id == Player);
-            return Json(Partidas, JsonRequestBehavior.AllowGet);        
+            return Json(Partidas, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult getConsulta()
         {
             int recibir = p;
-            if (recibir >= 2)
+            if (recibir == 2)
             {
                 p = 0;
+                recibir = 0;
             }
-            return Json(recibir, JsonRequestBehavior.AllowGet);
+            return Json(p, JsonRequestBehavior.AllowGet);
         }
     }
 }
-    
