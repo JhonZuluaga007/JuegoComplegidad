@@ -25,7 +25,7 @@ namespace Canon.Controllers
             bool codigo = (bool)jObject["data"]["is_valid"];
             if (codigo == true)
             {
-                return Content((string)jObject["data"]["user_id"]);
+                return Content("correcto");
             }
             else
             {
