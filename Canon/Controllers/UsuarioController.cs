@@ -65,5 +65,10 @@ namespace Canon.Controllers
             }
             return Json(p, JsonRequestBehavior.AllowGet);
         }
+
+        public void GetTerminarPartida(int partida)
+        {
+            Partida.RemoveAll(Partida => Partida.partidad == partida);
+        }
     }
 }

@@ -38,10 +38,16 @@ namespace Canon.Controllers
             return Json(launching, JsonRequestBehavior.AllowGet);
 
         }
+
         public ActionResult getChoque(int id)
         {
             var choque = launching.FirstOrDefault((c) => c.Departure == id);
             return Json(choque.Departure, JsonRequestBehavior.AllowGet);
+        }
+
+        public void GetTerminar(int partida)
+        {
+            launching.RemoveAll(launching=> launching.Departure == partida);
         }
     }
 }

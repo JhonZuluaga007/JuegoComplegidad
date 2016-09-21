@@ -18,7 +18,7 @@ namespace Canon.Controllers
         public ActionResult getFacebook(string tocken, string id)
         {
 
-            string url = "https://graph.facebook.com/debug_token?input_token=" + tocken + "" + "&access_token=1274845415868069|42659de328803bae76fa53e91d718c86";
+            string url = "https://graph.facebook.com/debug_token?input_token=" + tocken + "" + "&access_token=253278851732917|07dcd19cd79c62fcbb20399023bc3e45";
 
             var client = new WebClient();
             JObject jObject = JObject.Parse(client.DownloadString(url));
