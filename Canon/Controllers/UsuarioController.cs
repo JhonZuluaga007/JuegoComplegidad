@@ -59,11 +59,9 @@ namespace Canon.Controllers
 
         public ActionResult getConsulta()
         {
-            int recibir = p;
-            if (recibir == 2)
+            if (p > 2)
             {
-                p = 0;
-                recibir = 0;
+                p = 1;
             }
             return Json(p, JsonRequestBehavior.AllowGet);
         }
